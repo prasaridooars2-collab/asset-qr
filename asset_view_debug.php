@@ -272,7 +272,7 @@ function statusColors($status) {
 
             <div class="field-label">Asset Value</div>
             <div class="value-highlight">
-                ৳ <?php echo number_format((float)$asset['asset_value'], 2); ?>
+                ₹ <?php echo number_format((float)$asset['asset_value'], 2); ?>
             </div>
 
             <div class="footer-note">
