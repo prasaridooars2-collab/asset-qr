@@ -14,30 +14,22 @@
 
 <?php
 
-$config = [
-    'host' => getenv('DB_HOST'),
-    'port' => getenv('DB_PORT'),
-    'user' => getenv('DB_USER'),
-    'pass' => getenv('DB_PASS'),
-    'name' => getenv('DB_NAME')
-];
-
 $conn = mysqli_init();
 
 mysqli_ssl_set($conn, NULL, NULL, NULL, NULL, NULL);
 
 mysqli_real_connect(
     $conn,
-    $config['host'],
-    $config['user'],
-    $config['pass'],
-    $config['name'],
-    (int)$config['port'],
+    getenv("DB_HOST"),
+    getenv("DB_USER"),
+    getenv("DB_PASS"),
+    getenv("DB_NAME"),
+    (int)getenv("DB_PORT"),
     NULL,
     MYSQLI_CLIENT_SSL
 );
 
 if (!$conn) {
-    die("DB connection failed");
+    die("Database connection failed: " . mysqli_connect_error());
 }
 ?>
