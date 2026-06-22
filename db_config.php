@@ -12,10 +12,32 @@
    asset_view.php ei file-ke include() kore credentials nibe.
    ============================================================ */
 
-return [
-    'host' => "mysql-2482696a-prasari.l.aivencloud.com",
-    'name' => "defaultdb",
-    'user' => "avnadmin",
-    'pass' => "REAL_AIVEN_PASSWORD_DIN_EKHANE",   // <-- shudhu ei file-e password thakbe
-    'port' => 19125,
+<?php
+
+$config = [
+    'host' => getenv('DB_HOST'),
+    'port' => getenv('DB_PORT'),
+    'user' => getenv('DB_USER'),
+    'pass' => getenv('DB_PASS'),
+    'name' => getenv('DB_NAME')
 ];
+
+$conn = mysqli_init();
+
+mysqli_ssl_set($conn, NULL, NULL, NULL, NULL, NULL);
+
+mysqli_real_connect(
+    $conn,
+    $config['host'],
+    $config['user'],
+    $config['pass'],
+    $config['name'],
+    (int)$config['port'],
+    NULL,
+    MYSQLI_CLIENT_SSL
+);
+
+if (!$conn) {
+    die("DB connection failed");
+}
+?>
