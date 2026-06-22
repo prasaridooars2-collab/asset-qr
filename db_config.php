@@ -1,18 +1,4 @@
 <?php
-/* ============================================================
-   db_config.php
-   !!! EI FILE "htdocs" FOLDER-ER BAIRE, ROOT-E RAKHUN !!!
-   (jekhane .htaccess ar .override file gulo ache)
-
-   Ei file web theke kokhonoi direct access kora jabe na, karon
-   InfinityFree shudhu "htdocs"-er bhitorer file gulo serve kore.
-   Tai password ei file-e rakha "htdocs"-er bhitore rakhar cheye
-   onek beshi secure.
-
-   asset_view.php ei file-ke include() kore credentials nibe.
-   ============================================================ */
-
-<?php
 
 $conn = mysqli_init();
 
@@ -32,4 +18,5 @@ mysqli_real_connect(
 if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error());
 }
+
 ?>
